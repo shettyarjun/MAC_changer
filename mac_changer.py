@@ -13,6 +13,8 @@
 import subprocess
 import optparse
 import re
+import colorama
+from colorama import Fore
 
 #function-----------------------------------------------------------------------------------#
 
@@ -35,7 +37,20 @@ def get_arguments():
 
 def change_mac(interface, new_mac): #to use a funstion in python the remaining scripts should be in  a indent
 #or we can say like a tab space
-    print("welcome to mac changer !!")
+    print(Fore.GREEN + '''
+          _   _  _     __                       __            
+         | | /| / /__ / /______  __ _  ___     / /____        
+         | |/ |/ / -_) / __/ _ \/  ' \/ -_)   / __/ _ \       
+         |__/|__/\__/_/\__/\___/_/_/_/\__/    \__/\___/       
+                                                      
+           __  ___                 __                         
+          /  |/  /__ _____    ____/ /  ___ ____  ___ ____ ____
+         / /|_/ / _ `/ __/   / __/ _ \/ _ `/ _ \/ _ `/ -_) __/
+        /_/  /_/\_,_/\__/ ___\__/_//_/\_,_/_//_/\_, /\__/_/   
+                         /___/                 /___/          
+                                                      
+    '''
+    )
     print("[+] changing the " + interface + " into " + new_mac)
     subprocess.call(["sudo","ifconfig",interface,"down"])
     subprocess.call(["sudo","ifconfig",interface,"hw","ether",new_mac])
